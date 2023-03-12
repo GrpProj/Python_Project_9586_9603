@@ -7,17 +7,18 @@ import webbrowser as wb
 
 engine=pyttsx3.init() #call inittialfunction of pyttx3
 
+
 def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()
+    engine.say(audio)  #converts text passed into speech
+    engine.runAndWait() #Waits till it finish speaking
 
 def time():
-    Time=datetime.datetime.now().strftime("%I:%M:%S")
+    Time=datetime.datetime.now().strftime("%I:%M:%S") #retrieves the current time and formats it as a string in the format of "HH:MM:SS" using the datetime module
     speak("the current time is")
     speak(Time)
 
 def date():
-    year = str(datetime.datetime.now().year) #typecast to integer
+    year = str(datetime.datetime.now().year) 
     month = str(datetime.datetime.now().month)
     date = str(datetime.datetime.now().day)
     speak("the current date is ")
@@ -26,10 +27,11 @@ def date():
     speak(year)
 
 def wishme():
-    speak("Welcome")
+    speak("Welcome Sir")
     # time()
     # date()
-    hour=int(datetime.datetime.now().hour)
+    hour=int(datetime.datetime.now().hour) #typecast to integer
+    #Conditional greeting as per hour
     if hour>=6 and hour <12:
         speak("Good morning sir")
     elif hour >=12 and hour< 18:
@@ -38,7 +40,7 @@ def wishme():
         speak("Good evening sir")
     else:
         speak("Good night sir")
-    speak("Jarvis at your service Please tell me how can I help you?")
+    speak("JARVIS at your service Please tell me how can I help you?")
 
 def takeCommand():
     r = sr.Recognizer()
