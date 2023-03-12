@@ -4,6 +4,8 @@ import speech_recognition as sr #SpeechRecognition
 import wikipedia 
 import smtplib #inbuilt for email
 import webbrowser as wb
+import os 
+import pyautogui
 
 engine=pyttsx3.init() #call inittialfunction of pyttx3
 
@@ -68,6 +70,9 @@ def sendEmail(to,content):
     server.sendmail('aplaproject25@gmail.com', to, content) #where the first argument is the sender's email address, the second argument is a list of recipient email addresses, and the third argument is the email content in the form of a string
     server.close()
 
+def screenshot():
+    img = pyautogui.screenshot()
+    img.save("D:\\Hackathon\\Python_Project_9586_9603\\ss.png")
 
 if __name__ == "__main__":
     wishme()
@@ -97,9 +102,16 @@ if __name__ == "__main__":
                 speak("Unable to send email")
         elif 'search in chrome' in query:
             speak("What should i search?")
-            chromepath = 'C:\Program Files\Google\Chrome\Application\chrome.exe %s'
+            chromepath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe %s'
             search = takeCommand().lower()
-            wb.get(chromepath).open_new_tab(search + '.com')
+            wb.get(chromepath).open_new_tab(search+'.com')
+        elif 'play songs' in query:
+            songs_dir = ''
+            songs = os.listdir(songs_dir)
+            os.startfile(os.path.join(songs_dir, songs[0]))
+        elif 'screenshot' in query:
+            screenshot()
+            speak("I have taken the screenshot")
         elif 'offline' in query:
             speak("I hope I was useful to you sir")
             quit()

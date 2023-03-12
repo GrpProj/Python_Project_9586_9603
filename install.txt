@@ -4,3 +4,4 @@ python -m pip install pyaudio
 pip install wikipedia
 pip install secure-smtplib   
 pip install pycopy-webbrowser
+pip install PyAutoGUI
