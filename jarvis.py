@@ -1,6 +1,6 @@
 import pyttsx3  #text to speech module
 import datetime
-import speech_recognition as sr
+import speech_recognition as sr #SpeechRecognition
 import wikipedia 
 import smtplib #inbuilt for email
 import webbrowser as wb
@@ -27,7 +27,7 @@ def date():
     speak(year)
 
 def wishme():
-    speak("Welcome Sir")
+    speak("Welcome sir")
     # time()
     # date()
     hour=int(datetime.datetime.now().hour) #typecast to integer
@@ -44,29 +44,28 @@ def wishme():
 
 def takeCommand():
     r = sr.Recognizer()
-    with sr.Microphone() as source:
+    with sr.Microphone() as source: # act as a source for input
         print("Listening..")
-        r.pause_threshold = 1
+        r.pause_threshold = 1  # 1s delay to listen
         audio=r.listen(source)
 
     try:
-        print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in')
+        print("...Recognizing...")
+        query = r.recognize_google(audio, language='en-in') #takes the audio as input and an optional language parameter specifying the language of the audio.
         print(query)
 
     except Exception as e:
         print(e)
         speak("say that again please")
         return "None"
-        
     return query
 
 def sendEmail(to,content):
     server= smtplib.SMTP('smtp.gmail.com',587)
-    server.ehlo()
-    server.starttls()
-    server.login('aplaproject25@gmail.com','Project@2025')
-    server.sendmail('aplaproject25@gmail.com', to, content)
+    server.ehlo() #used to initiate the connection between your Python script and the SMTP server you are connecting to
+    server.starttls() #to enable TLS encryption for the connection
+    server.login('aplaproject25@gmail.com','Project@2025') #authentication
+    server.sendmail('aplaproject25@gmail.com', to, content) #where the first argument is the sender's email address, the second argument is a list of recipient email addresses, and the third argument is the email content in the form of a string
     server.close()
 
 
@@ -80,12 +79,10 @@ if __name__ == "__main__":
 
         elif 'date' in query:
             date()
-        elif 'offline' in query:
-            quit()
         elif 'wikipedia' in query:
-            speak("Searching")
+            speak("...Searching...")
             query = query.replace("wikipedia","")
-            result= wikipedia.summary(query,sentences=2)
+            result= wikipedia.summary(query,sentences=3) #returns a summary/ short snippet of our search result from wikipedia
             print(result)
             speak(result)
         elif 'send email' in query:
@@ -98,12 +95,15 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 speak("Unable to send email")
-        elif 'chrome' in query:
+        elif 'search in chrome' in query:
             speak("What should i search?")
-            chromepath = '/Applications/Google Chrome.app'
+            chromepath = 'C:\Program Files\Google\Chrome\Application\chrome.exe %s'
             search = takeCommand().lower()
             wb.get(chromepath).open_new_tab(search + '.com')
-
+        elif 'offline' in query:
+            speak("I hope I was useful to you sir")
+            quit()
+        
 
 
 
