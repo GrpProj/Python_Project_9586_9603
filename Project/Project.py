@@ -3,27 +3,31 @@ import streamlit as st
 import plotly.express as px
 
 # loading gapminder dataset from plotly 
-gapminder = px.data.gapminder() 
+gapminder = px.data.gapminder()
+
+st.write("# Study of GDP & Life Expectancy ")
 
 st.header("Input plotly data:")
 st.write(gapminder)
 
 
 country = gapminder['country'].unique().tolist()
-country_select = st.selectbox('select country',country,0)
+country_select = st.selectbox('Select country',country,0)
 country_data = gapminder[gapminder['country']==country_select]
 fig1 = px.bar(country_data, x='year', y='gdpPercap',labels={'gdpPercap': 'GDP per capital'}, height=400)
+fig1.update_layout(width=900)
 st.write(fig1)
 
 fig5 = px.bar(country_data, x='year', y='pop', color='lifeExp', labels={'pop': 'Population of '+ country_select},
              height=400, template='seaborn')
 #fig5.show()
+fig5.update_layout(width=900)
 st.write(fig5)
 
  
 #fetch all unique dates
 years = gapminder['year'].unique().tolist()
-years_select = st.selectbox('select year for data',years,0)
+years_select = st.selectbox('Select year for data',years,0)
 
 df = gapminder[gapminder['year']==years_select]
 # color by continent 
