@@ -8,11 +8,17 @@ gapminder = px.data.gapminder()
 st.header("Input plotly data:")
 st.write(gapminder)
 
+
 country = gapminder['country'].unique().tolist()
 country_select = st.selectbox('select country',country,0)
 country_data = gapminder[gapminder['country']==country_select]
-fig1 = px.bar(country_data, x='year', y='pop', height=400)
+fig1 = px.bar(country_data, x='year', y='gdpPercap',labels={'gdpPercap': 'GDP per capital'}, height=400)
 st.write(fig1)
+
+fig5 = px.bar(country_data, x='year', y='pop', color='lifeExp', labels={'pop': 'Population of '+ country_select},
+             height=400, template='seaborn')
+#fig5.show()
+st.write(fig5)
 
  
 #fetch all unique dates
@@ -35,4 +41,6 @@ fig4 = px.choropleth(gapminder, locations='iso_alpha', color='lifeExp', hover_na
                     animation_frame='year', color_continuous_scale=px.colors.sequential.Plasma, projection='natural earth')
 fig4.update_layout(width=900)   
 st.write(fig4) 
+
+
 
