@@ -8,8 +8,7 @@ import plotly.offline as py
 # loading gapminder dataset from plotly 
 gapminder = px.data.gapminder()
 
-st.title('# Study of GDP & Life Expectancy ')
-st.title('A title with _italics_ :yellow[colors]')
+st.title('Study of :white[GDP & Life Expectancy]')
 
 st.header("Input plotly data:")
 st.write(gapminder)
