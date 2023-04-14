@@ -8,7 +8,7 @@ import plotly.offline as py
 # loading gapminder dataset from plotly 
 gapminder = px.data.gapminder()
 
-st.header("# Study of GDP & Life Expectancy ")
+st.header("# Study of GDP & Life Expectancy #")
 st.subheader('The following website is made by Rehan Almeida and Zane Falcao ')
 
 
