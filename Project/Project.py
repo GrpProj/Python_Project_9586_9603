@@ -8,14 +8,15 @@ import plotly.offline as py
 # loading gapminder dataset from plotly 
 gapminder = px.data.gapminder()
 
-st.write("# Study of GDP & Life Expectancy ")
-
-
+st.title('# Study of GDP & Life Expectancy ')
+st.title('A title with _italics_ :yellow[colors]')
 
 st.header("Input plotly data:")
 st.write(gapminder)
 #fetch all unique dates
-years = gapminder['year'].unique().tolist()
+years = gapminder['year'].unique().tolist()       
+# uniquie() used to find the unique values from a series.
+# tolist() used to convert a given array to an ordinary list with the same items, elements, or values
 years_select = st.selectbox('Select year for data',years,0)
 
 country = gapminder['country'].unique().tolist()
@@ -34,9 +35,6 @@ st.write(fig5)
 fig6 = px.bar(country_data, x='pop', y='gdpPercap', color='lifeExp', labels={'gdpPercap': 'GDP per capital','pop': 'Population of '+ country_select}, height=400,template='plotly_dark')
 st.write(fig6)
 
- 
-
-
 df = gapminder[gapminder['year']==years_select]
 # color by continent 
 fig2 = px.scatter(df, x='gdpPercap', y='lifeExp', color='continent',hover_name='continent',log_x=True,size_max=55,range_x=[10,100000],range_y=[25,90])
@@ -54,7 +52,8 @@ fig4 = px.choropleth(gapminder, locations='iso_alpha', color='lifeExp', hover_na
 fig4.update_layout(width=700)   
 st.write(fig4) 
 
-st.write('The following website is made by Rehan Almeida and Zane Falcao ')
+
+
 
 
 
