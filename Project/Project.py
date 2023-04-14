@@ -22,7 +22,7 @@ years_select = st.selectbox('Select year for data',years,0)
 country = gapminder['country'].unique().tolist()
 country_select = st.selectbox('Select country',country,0)
 country_data = gapminder[gapminder['country']==country_select]
-fig1 = px.bar(country_data, x='year', y='gdpPercap',labels={'gdpPercap': 'GDP per capital'}, height=400)
+fig1 = px.bar(country_data, x='year', y='gdpPercap',labels={'gdpPercap': 'GDP per capita'}, height=400)
 fig1.update_layout(width=700)
 st.write(fig1)
 
@@ -32,7 +32,7 @@ fig5 = px.bar(country_data, x='year', y='pop', color='lifeExp', labels={'pop': '
 fig5.update_layout(width=700)
 st.write(fig5)
 
-fig6 = px.bar(country_data, x='pop', y='gdpPercap', color='lifeExp', labels={'gdpPercap': 'GDP per capital','pop': 'Population of '+ country_select}, height=400,template='plotly_dark')
+fig6 = px.bar(country_data, x='pop', y='gdpPercap', color='lifeExp', labels={'gdpPercap': 'GDP per capita','pop': 'Population of '+ country_select}, height=400,template='plotly_dark')
 st.write(fig6)
 
 df = gapminder[gapminder['year']==years_select]
