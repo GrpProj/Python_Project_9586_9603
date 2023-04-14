@@ -1,0 +1,6 @@
+Dockerfile
+*.md
+LICENSE
+.dockerignore
+.devcontainer
+sample.jpg
