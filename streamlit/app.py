@@ -15,6 +15,7 @@ st.header("Input plotly data:")
 st.write(gapminder)
 #fetch all unique dates
 years = gapminder['year'].unique().tolist()
+
 years_select = st.selectbox('Select year for data',years,0)
 
 country = gapminder['country'].unique().tolist()
