@@ -8,11 +8,11 @@ import plotly.offline as py
 # loading gapminder dataset from plotly 
 gapminder = px.data.gapminder()
 
-st.header("# Study of GDP & Life Expectancy #")
-st.subheader('The following website is made by Rehan Almeida and Zane Falcao ')
+st.write("# Study of GDP & Life Expectancy ")
 
 
-st.write("Input plotly data:")
+
+st.header("Input plotly data:")
 st.write(gapminder)
 #fetch all unique dates
 years = gapminder['year'].unique().tolist()
@@ -54,6 +54,7 @@ fig4 = px.choropleth(gapminder, locations='iso_alpha', color='lifeExp', hover_na
 fig4.update_layout(width=700)   
 st.write(fig4) 
 
+st.write('The following website is made by Rehan Almeida and Zane Falcao ')
 
 
 
