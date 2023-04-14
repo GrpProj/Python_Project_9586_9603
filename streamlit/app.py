@@ -9,6 +9,7 @@ import plotly.offline as py
 gapminder = px.data.gapminder()
 
 st.write("# Study of GDP & Life Expectancy ")
+st.subheader('Made by Rehan Almeida and Zane Falcao ')
 
 st.header("Input plotly data:")
 st.write(gapminder)
@@ -51,6 +52,8 @@ fig4 = px.choropleth(gapminder, locations='iso_alpha', color='lifeExp', hover_na
                     animation_frame='year', color_continuous_scale=px.colors.sequential.Plasma, projection='natural earth')
 fig4.update_layout(width=700)   
 st.write(fig4) 
+
+
 
 
 

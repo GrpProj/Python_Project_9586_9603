@@ -51,6 +51,8 @@ fig4 = px.choropleth(gapminder, locations='iso_alpha', color='lifeExp', hover_na
 fig4.update_layout(width=700)   
 st.write(fig4) 
 
+st.write('The following website is made by Rehan Almeida and Zane Falcao ')
+
 
 
 
