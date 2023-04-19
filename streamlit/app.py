@@ -34,9 +34,6 @@ st.write(fig5)
 fig6 = px.bar(country_data, x='pop', y='gdpPercap', color='lifeExp', labels={'gdpPercap': 'GDP per capita','pop': 'Population of '+ country_select}, height=400,template='plotly_dark')
 st.write(fig6)
 
- 
-
-
 df = gapminder[gapminder['year']==years_select]
 # color by continent 
 fig2 = px.scatter(df, x='gdpPercap', y='lifeExp', color='continent',hover_name='continent',log_x=True,size_max=55,range_x=[10,100000],range_y=[25,90])
